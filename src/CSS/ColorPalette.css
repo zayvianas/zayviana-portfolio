@@ -1,0 +1,36 @@
+/* Base fallback */
+:root {
+    --bg: #fff;
+    --text: #111;
+    --accent: #5ca08e;
+    --accent-light: #a0d995;
+  }
+  
+  body.slipstream.light {
+    --bg: #ffffff;
+    --text: #1B1F3B;
+    --accent: #7FB8FF;
+    --accent-light: #FF834E;
+  }
+  
+  body.slipstream.dark {
+    --bg: #1B1F3B;
+    --text: #ffffff;
+    --accent: #FF834E;
+    --accent-light: #7FB8FF;
+  }
+  
+  body.ramen.light {
+    --bg: white-space;
+    --text: #401f1f;
+    --accent: #f06292;
+    --accent-light: #ffc1e3;
+  }
+  
+  body.ramen.dark {
+    --bg: black;
+    --text: #fff;
+    --accent: #e91e63;
+    --accent-light: #f8bbd0;
+  }
+  

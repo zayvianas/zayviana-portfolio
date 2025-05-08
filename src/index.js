@@ -1,6 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
+import './CSS/Footer.css';
+import './CSS/NavBar.css';
+import './CSS/Home.css';
+import './CSS/Resume.css';
+import './CSS/News.css';
+import './CSS/SkillsGrid.css';
+import './CSS/Global.css';
+import './CSS/ColorPalette.css';
+import'./CSS/ThemeToggle.css';
+
 import App from './App';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

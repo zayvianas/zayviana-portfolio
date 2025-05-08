@@ -3,7 +3,8 @@ import React from 'react';
 function News() {
   return (
     <div className="news-page">
-      <h1>Updates & News</h1>
+      <div className="content-container">
+      <h1 className="title">Updates & News</h1>
 
       <div className="news-post">
         <h2>🚀 Just Launched: Income Classification Project</h2>
@@ -26,8 +27,16 @@ function News() {
           I'm wrapping up my Master's in AI & Business Analytics and actively seeking roles in project coordination,
           data analytics, or technical solutions delivery. Let’s connect!
         </p>
+        <a
+      href="https://www.youtube.com/live/z6PqvOrZdTU"
+      target="_blank"
+      rel="noopener noreferrer"
+      >
+       Watch My Graduation Live →
+    </a>
       </div>
     </div>
+    </div>  
   );
 }
 

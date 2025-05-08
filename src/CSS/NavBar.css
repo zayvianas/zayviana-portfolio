@@ -1,0 +1,95 @@
+/* NavBar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: var(--bg);
+    color: var(--text);
+    border-bottom: 1px solid var(--accent-light);
+    flex-wrap: wrap;
+  }
+  
+  .navbar-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  
+  .navbar-logo img {
+    height: 40px;
+    width: auto;
+  }
+  
+  .navbar-links {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    flex-wrap: wrap;
+  }
+  
+  .navbar-link {
+    text-decoration: none;
+    font-weight: 500;
+    color: var(--text);
+    transition: color 0.3s ease;
+  }
+  
+  .navbar-link:hover {
+    color: var(--accent);
+    text-decoration: underline;
+  }
+  
+  .theme-toggle-container {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+  
+  .toggle-theme-btn,
+  .theme-select {
+    background-color: transparent;
+    color: var(--text);
+    border: 2px solid var(--accent);
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .toggle-theme-btn:hover,
+  .theme-select:hover {
+    background-color: var(--accent-light);
+  }
+  @media (max-width: 768px) {
+    .navbar {
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+  
+    .navbar-links {
+      flex-direction: row; /* ← Make links stay in a row */
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+    }
+  
+    .theme-toggle-container {
+      flex-direction: row; /* ← Keep buttons side by side */
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+  
+    .toggle-theme-btn,
+    .theme-select {
+      width: fit-content;
+    }
+  
+    .navbar-logo {
+      align-self: center;
+    }
+  }
+  

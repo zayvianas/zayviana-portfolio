@@ -1,0 +1,36 @@
+/* Footer */
+.site-footer {
+    text-align: center;
+    padding: 1.5rem;
+    font-size: 0.9rem;
+    color: var(--text);
+    margin-top: 4rem;
+    border-top: 1px solid var(--accent);
+    background-color: var(--bg);
+  }
+  
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin: 1rem 0;
+    flex-wrap: wrap;
+  }
+  
+  .footer-links a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+  }
+  
+  .footer-links a:hover {
+    text-decoration: underline;
+  }
+  
+  .footer-contact {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--text);
+    margin-top: 0.5rem;
+  }
+  

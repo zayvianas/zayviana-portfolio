@@ -1,26 +1,36 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
+import { useTheme } from '../ThemeContext';
+import ThemeToggle from './ThemeToggle'; 
+import slipstreamLogo from './assets/slipstream-logo.png';
+import ramenLogo from './assets/ramen-logo.png';
 
-function Navbar() {
-  const [darkMode, setDarkMode] = useState(true);
+const Navbar = () => {
+  const { palette } = useTheme();
 
-  useEffect(() => {
-    document.body.className = darkMode ? 'dark' : 'light';
-  }, [darkMode]);
+  const getLogo = () => {
+    switch (palette) {
+      case 'ramen': return ramenLogo;
+      case 'slipstream': return slipstreamLogo;
+      default: return slipstreamLogo;
+    }
+  };
 
   return (
     <nav className="navbar">
-      <h2 className="navbar-logo">Zayviana</h2>
+      <div className="navbar-logo">
+        <img src={getLogo()} alt="Logo" />
+      </div>
+      
       <div className="navbar-links">
         <Link to="/" className="navbar-link">Home</Link>
         <Link to="/resume" className="navbar-link">Resume</Link>
         <Link to="/news" className="navbar-link">News</Link>
-        <button className="toggle-btn" onClick={() => setDarkMode(!darkMode)}>
-          {darkMode ? '☀️ Light Mode' : '🌙 Dark Mode'}
-        </button>
+      
+        <ThemeToggle />
       </div>
     </nav>
   );
-}
+};
 
 export default Navbar;
