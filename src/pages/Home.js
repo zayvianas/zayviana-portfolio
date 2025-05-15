@@ -2,28 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Typewriter } from 'react-simple-typewriter';
 import SkillsSection from '../components/SkillsGrid';
 
-
-const graduationDate = new Date("2025-05-08T13:30:00"); 
+ 
 
 
 function Home() {
-  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      const now = new Date();
-      const diff = graduationDate - now;
-  
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-      const minutes = Math.floor((diff / (1000 * 60)) % 60);
-      const seconds = Math.floor((diff / 1000) % 60);
-  
-      setTimeLeft({ days, hours, minutes, seconds });
-    }, 1000);
-  
-    return () => clearInterval(timer);
-  }, []);
   
 
   return (
@@ -63,31 +45,7 @@ function Home() {
           <div className="contact-info">
   <p className="contact-line">📍 Tampa, FL</p>
   <p className="contact-line">📧 zayvianaa@gmail.com</p>
-</div>
-<div className="info-row">
-  <div className="countdown-section">
-  <h2 className="section-title"> Countdown to Graduation</h2>
-
-    <div className="digital-countdown">
-      <div className="count-unit">{timeLeft.days}<span>Days</span></div>
-      <div className="colon">:</div>
-      <div className="count-unit">{String(timeLeft.hours).padStart(2, '0')}<span>Hrs</span></div>
-      <div className="colon">:</div>
-      <div className="count-unit">{String(timeLeft.minutes).padStart(2, '0')}<span>Min</span></div>
-      <div className="colon">:</div>
-      <div className="count-unit">{String(timeLeft.seconds).padStart(2, '0')}<span>Sec</span></div>
-    </div>
-    <h2 className="section-title"> Watch Me Graduate</h2>
-    <br/>
-  <a
-    href="https://www.youtube.com/live/z6PqvOrZdTU"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="grad-watch-btn"
-  >
-    Watch Here 
-  </a>
-  </div>
+  <br/>
 </div>
 
 

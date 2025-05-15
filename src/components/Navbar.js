@@ -8,25 +8,40 @@ import ramenLogo from './assets/ramen-logo.png';
 const Navbar = () => {
   const { palette } = useTheme();
 
-  const getLogo = () => {
+  const getBranding = () => {
     switch (palette) {
-      case 'ramen': return ramenLogo;
-      case 'slipstream': return slipstreamLogo;
-      default: return slipstreamLogo;
+      case 'ramen':
+        return {
+          logo: ramenLogo,
+          tagline: 'こんにちは世界'
+        };
+      case 'slipstream':
+        return {
+          logo: slipstreamLogo,
+          tagline: 'hello world'
+        };
+      default:
+        return {
+          logo: slipstreamLogo,
+          tagline: 'hello world'
+        };
     }
   };
+
+  const { logo, tagline } = getBranding();
 
   return (
     <nav className="navbar">
       <div className="navbar-logo">
-        <img src={getLogo()} alt="Logo" />
+        <span className="navbar-tagline">{tagline}</span>
+        <img src={logo} alt="Logo" className="logo-img" />
+        
       </div>
       
       <div className="navbar-links">
         <Link to="/" className="navbar-link">Home</Link>
         <Link to="/resume" className="navbar-link">Resume</Link>
         <Link to="/news" className="navbar-link">News</Link>
-      
         <ThemeToggle />
       </div>
     </nav>

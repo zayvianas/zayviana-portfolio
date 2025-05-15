@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+
+import React, { useState, useEffect, useMemo } from 'react';
 import { PieChart, Pie, Tooltip, Legend, Cell } from 'recharts';
 
 
@@ -31,6 +32,30 @@ function Resume() {
   
     return () => clearInterval(interval);
   }, []);
+
+const [chartColors, setChartColors] = useState([]);
+
+useEffect(() => {
+  const updateColors = () => {
+    const styles = getComputedStyle(document.body);
+    setChartColors([
+      styles.getPropertyValue('--chart-color-0').trim(),
+      styles.getPropertyValue('--chart-color-1').trim(),
+      styles.getPropertyValue('--chart-color-2').trim()
+    ]);
+  };
+
+  
+  updateColors();
+
+  
+  const observer = new MutationObserver(updateColors);
+  observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+
+  return () => observer.disconnect();
+}, []);
+
+
   
   
   const skillGroups = [
@@ -52,7 +77,7 @@ function Resume() {
   ];
   
   
-  const COLORS = ['#5ca08e', '#f9c74f', '#90be6d'];
+  
   
   return (
     <div className="resume-page">
@@ -60,11 +85,17 @@ function Resume() {
       
   <h1 className="title"> Resume</h1>
   <p className="resume-subtitle">Technical Skills • Projects • Experience</p>
+
+  <div className="resume-button-group">
   <a href="/resume.pdf" className="resume-btn" target="_blank" rel="noopener noreferrer">
-    Download Full PDF →
+    Download My Resume →
   </a>
 
-      
+  <a href="/transcript.pdf" className="resume-btn" target="_blank" rel="noopener noreferrer">
+    Download My Transcript →
+  </a>
+
+      </div>
 
       {/* Summary */}
       <div className="resume-section"></div>
@@ -148,42 +179,54 @@ function Resume() {
 <div className="resume-section">
 <h2 className='section-title'>Other Technical & Professional Skills</h2>
 <div className="centered-chart">
-  <PieChart width={500} height={400}>
-    <Pie
-      data={skillGroups}
-      dataKey="value"
-      cx="50%"
-      cy="50%"
-      innerRadius={80}
-      outerRadius={120}
-      fill="#8884d8"
-      label={false}
-      stroke="none"
-      isAnimationActive={true}
-      animationBegin={0}
-      animationDuration={1200}
-      animationEasing="ease-out"
-      startAngle={90}
-      endAngle={-270}
-    >
-      {skillGroups.map((entry, index) => (
-        <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-      ))}
-    </Pie>
-    <Tooltip
-      formatter={(_, __, { payload }) => payload.skills.join(', ')}
-      contentStyle={{
-        backgroundColor: '#111',
-        color: '#fff',
-        borderRadius: '8px',
-        border: '1px solid #5ca08e',
-        fontSize: '0.9rem',
-        padding: '10px'
-      }}
-      itemStyle={{ color: '#fff' }}
-    />
-    <Legend />
-  </PieChart>
+<PieChart width={500} height={400}>
+  <Pie
+    data={skillGroups}
+    dataKey="value"
+    cx="50%"
+    cy="50%"
+    innerRadius={80}
+    outerRadius={120}
+    label={false}
+    stroke="none"
+    isAnimationActive={true}
+    animationBegin={0}
+    animationDuration={1200}
+    animationEasing="ease-out"
+    startAngle={90}
+    endAngle={-270}
+  >
+    {skillGroups.map((entry, index) => (
+  <Cell key={`cell-${index}`} fill={chartColors[index % chartColors.length]} />
+))}
+
+  </Pie>
+  <Tooltip
+    formatter={(_, __, { payload }) => payload.skills.join(', ')}
+    contentStyle={{
+      backgroundColor: getComputedStyle(document.documentElement)
+        .getPropertyValue('--bg')
+        .trim(),
+      color: getComputedStyle(document.documentElement)
+        .getPropertyValue('--text')
+        .trim(),
+      borderRadius: '8px',
+      border: `1px solid ${getComputedStyle(document.documentElement)
+        .getPropertyValue('--accent')
+        .trim()}`,
+      fontSize: '0.9rem',
+      padding: '10px'
+    }}
+    itemStyle={{
+      color: getComputedStyle(document.documentElement)
+        .getPropertyValue('--text')
+        .trim()
+    }}
+  />
+  <Legend />
+</PieChart>
+
+
 
 </div>
 <h3 className='section-title'>Core Competencies</h3>
